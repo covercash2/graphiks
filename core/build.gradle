@@ -1,0 +1,23 @@
+apply plugin: "kotlin"
+apply plugin: "kotlin-kapt"
+
+sourceCompatibility = 1.6
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+sourceSets.main.java.srcDirs = [ "src/main/kotlin" ]
+
+sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+    test.java.srcDirs += 'src/test/kotlin'
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    compile "com.google.dagger:dagger:2.4"
+    compile "com.github.salomonbrys.kodein:kodein:3.4.1"
+    kapt "com.google.dagger:dagger-compiler:2.4"
+}
+
+eclipse.project {
+    name = appName + "-core"
+}
